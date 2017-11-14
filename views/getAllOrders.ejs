@@ -6,17 +6,17 @@
 </head>
 <body>
 <div class="container">
-  <h2>Database Results getting Routes </h2>
+  <h2>Database Results getting Orders </h2>
   <ul>
       <% results.forEach(function(r) { %>
     <li>Order ID:<%= r._id %> </li>
     <ul>
-      <li>Customer ID:( <%=r.CUSTOMER_ID %></li>
-      <li>Billing ID: ( <%=r.BILLING_ID %></li>
-      <li>Shipping ID:( <%=r.SHIPPING_ID %></li>
-      <li>Date: ( <%=r.DATE %></li>
-      <li>Products:( <%=r.PRODUCT_VECTOR %></li>
-      <li>Order Total: ( <%=r.ORDER_TOTAL %>$</li>
+      <li>Customer ID: <%=r.CUSTOMER_ID %></li>
+      <li>Billing ID:  <%=r.BILLING_ID %></li>
+      <li>Shipping ID: <%=r.SHIPPING_ID %></li>
+      <li>Date:  <%=r.DATE %></li>
+      <li>Products: <%=r.PRODUCT_VECTOR %></li>
+      <li>Order Total: <%=r.ORDER_TOTAL %>$</li>
     </ul>
     <br/><br/>
       <% }); %>
