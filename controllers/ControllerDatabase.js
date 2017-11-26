@@ -6,21 +6,6 @@ module.exports.storeData =  function (request, response) {
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
 
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
-
-        if(dd<10) {
-            dd = '0'+dd
-        }
-
-        if(mm<10) {
-            mm = '0'+mm
-        }
-
-        today = mm + '/' + dd + '/' + yyyy;
-
         if(err) throw err;
         var cart= JSON.parse(request.body.cart);
         var card= JSON.parse(request.body.card);
@@ -85,7 +70,7 @@ module.exports.storeData =  function (request, response) {
             SHIPPING_ID: shippingID,
             DATE: new Date(),
             //PRODUCT_VECTOR: '',//cart.items,
-            //ORDER_TOTAL: cart.totalPrice
+            ORDER_TOTAL: cart.totalPrice
         };
 
         Orders.insertOne(ordersData, function (err, docs) {
