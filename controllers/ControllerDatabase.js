@@ -84,8 +84,8 @@ module.exports.storeData =  function (request, response) {
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
             //DATE: '',//new Date(),
-            //PRODUCT_VECTOR: '',//cart.items,
-            //ORDER_TOTAL: cart.totalPrice
+            PRODUCT_VECTOR: '',//cart.items,
+            ORDER_TOTAL: cart.totalPrice
         };
 
         Orders.insertOne(ordersData, function (err, docs) {
