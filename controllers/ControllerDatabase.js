@@ -20,7 +20,7 @@ module.exports.storeData =  function (request, response) {
             _id: customerID,
             FIRSTNAME: customer.name.fName,
             LASTNAME: customer.name.lName,
-            STREET: card.billingAddress.add1,
+            STREET: card.billingAddress.add1+' '+card.billingAddress.add2,
             CITY: card.billingAddress.city,
             STATE: card.billingAddress.state,
             ZIP: card.billingAddress.zip,
@@ -52,7 +52,7 @@ module.exports.storeData =  function (request, response) {
         var shippingData={
             _id: shippingID,
             CUSTOMER_ID: customerID,
-            SHIPPING_STREET: customer.shippingAddress.add1,
+            SHIPPING_STREET: customer.shippingAddress.add1+' '+customer.shippingAddress.add1,
             SHIPPING_CITY: customer.shippingAddress.city,
             SHIPPING_STATE: customer.shippingAddress.state,
             SHIPPING_ZIP: customer.shippingAddress.zip
@@ -78,7 +78,7 @@ module.exports.storeData =  function (request, response) {
 
         });
 
-        response.send('succseessssafas');
+        response.send('success');
 
         db.close(function (err) {
             if(err) throw err;
