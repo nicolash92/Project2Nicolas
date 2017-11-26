@@ -41,12 +41,12 @@ module.exports.storeData =  function (request, response) {
             CREDITCARDEXP: card.expMonth,
             CREDITCARDSECURITYNUM: ''//card.securityCode
         };
-/*
+
         Billing.insertOne(billingData, function (err, docs) {
             if (err) throw err;
 
         });
-
+/*
         var Shipping = db.collection('SHIPPING');
         var shippingData={
             _id: shippingID,
