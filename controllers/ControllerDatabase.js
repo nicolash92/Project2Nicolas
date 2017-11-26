@@ -80,12 +80,12 @@ module.exports.storeData =  function (request, response) {
 
         var Orders = db.collection('ORDERS');
         var ordersData={
-            CUSTOMER_ID: customerID,
-            BILLING_ID: billingID,
-            SHIPPING_ID: shippingID,
-            DATE: '',//new Date(),
-            PRODUCT_VECTOR: '',//cart.items,
-            ORDER_TOTAL: cart.totalPrice
+            CUSTOMER_ID: 'hello'//customerID,
+            //BILLING_ID: billingID,
+            //SHIPPING_ID: shippingID,
+            //DATE: '',//new Date(),
+            //PRODUCT_VECTOR: '',//cart.items,
+            //ORDER_TOTAL: cart.totalPrice
         };
 
         Orders.insertOne(ordersData, function (err, docs) {
