@@ -52,7 +52,7 @@ module.exports.storeData =  function (request, response) {
         var shippingData={
             _id: shippingID,
             CUSTOMER_ID: customerID,
-            SHIPPING_STREET: customer.shippingAddress.add1+' '+customer.shippingAddress.add1,
+            SHIPPING_STREET: customer.shippingAddress.add1+' '+customer.shippingAddress.add2,
             SHIPPING_CITY: customer.shippingAddress.city,
             SHIPPING_STATE: customer.shippingAddress.state,
             SHIPPING_ZIP: customer.shippingAddress.zip
