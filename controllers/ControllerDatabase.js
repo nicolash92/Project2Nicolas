@@ -18,13 +18,13 @@ module.exports.storeData =  function (request, response) {
         var Orders = db.collection('CUSTOMERS');
         var ordersData={
             _id: cutomerID,
-            FIRSTNAME: '',
-            LASTNAME: '',
-            STREET: '',
-            CITY: '',
-            STATE: '',
-            ZIP: '',
-            EMAIL: ''
+            FIRSTNAME: '1',
+            LASTNAME: '1',
+            STREET: '1',
+            CITY: '1',
+            STATE: '1',
+            ZIP: '1',
+            EMAIL: '1'
         };
 
         Orders.insertOne(ordersData, function (err, docs) {
