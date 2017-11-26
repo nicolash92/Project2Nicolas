@@ -6,6 +6,21 @@ module.exports.storeData =  function (request, response) {
 
     mongodb.MongoClient.connect(mongoDBURI, function(err, db) {
 
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if(dd<10) {
+            dd = '0'+dd
+        }
+
+        if(mm<10) {
+            mm = '0'+mm
+        }
+
+        today = mm + '/' + dd + '/' + yyyy;
+
         if(err) throw err;
         var cart= JSON.parse(request.body.cart);
         var card= JSON.parse(request.body.card);
@@ -46,7 +61,7 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-
+/*
         var Shipping = db.collection('SHIPPING');
         var shippingData={
             _id: shippingID,
@@ -76,7 +91,7 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-
+*/
         response.send('succseessssafas');
 
         db.close(function (err) {
