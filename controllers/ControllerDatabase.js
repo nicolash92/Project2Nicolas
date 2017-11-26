@@ -11,19 +11,19 @@ module.exports.storeData =  function (request, response) {
         var card= JSON.parse(request.body.card);
         var customer= JSON.parse(request.body.customer);
 
-        var cutomerID = Math.floor((Math.random()*10000000000)+1 );
+        var customerID = Math.floor((Math.random()*10000000000)+1 );
         var billingID = Math.floor((Math.random()*10000000000)+1 );
         var shippingID = Math.floor((Math.random()*10000000000)+1 );
 
         var Customers = db.collection('CUSTOMERS');
         var customersData={
-            _id: cutomerID,
+            _id: customerID,
             FIRSTNAME: customer.name.fName,
-            LASTNAME: '1',
-            STREET: '1',
-            CITY: '1',
-            STATE: '1',
-            ZIP: '1',
+            LASTNAME: customer.name.lName,
+            STREET: card.billingAddress.add1,
+            CITY: card.billingAddress.city,
+            STATE: card.billingAddress.state,
+            ZIP: card.billingAddress.zip,
             EMAIL: '1'
         };
 
@@ -35,11 +35,11 @@ module.exports.storeData =  function (request, response) {
         var Billing = db.collection('BILLING');
         var billingData={
             _id:billingID,
-            CUSTOMER_ID:cutomerID,
-            CREDITCARDTYPE: '',
-            CREDITCARDNUM: '',
-            CREDITCARDEXP: '',
-            CREDITCARDSECURITYNUM: ''
+            CUSTOMER_ID:customerID,
+            CREDITCARDTYPE: card.cardType,
+            CREDITCARDNUM: card.cardNumber,
+            CREDITCARDEXP: card.expMonth,
+            CREDITCARDSECURITYNUM: card.securityCode
         };
 
         Billing.insertOne(billingData, function (err, docs) {
@@ -50,11 +50,11 @@ module.exports.storeData =  function (request, response) {
         var Shipping = db.collection('SHIPPING');
         var shippingData={
             _id: shippingID,
-            CUSTOMER_ID: cutomerID,
-            SHIPPING_STREET: '',
-            SHIPPING_CITY: '',
-            SHIPPING_STATE: '',
-            SHIPPING_ZIP: ''
+            CUSTOMER_ID: customerID,
+            SHIPPING_STREET: customer.shippingAddress.add1,
+            SHIPPING_CITY: customer.shippingAddress.city,
+            SHIPPING_STATE: customer.shippingAddress.state,
+            SHIPPING_ZIP: customer.shippingAddress.zip
         };
 
         Shipping.insertOne(shippingData, function (err, docs) {
@@ -62,14 +62,14 @@ module.exports.storeData =  function (request, response) {
 
         });
 
-        var Orders = db.collection('Orders');
+        var Orders = db.collection('ORDERS');
         var ordersData={
-            CUSTOMER_ID: cutomerID,
+            CUSTOMER_ID: customerID,
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
             DATE: '',
-            PRODUCT_VECTOR: '',
-            ORDER_TOTAL: ''
+            PRODUCT_VECTOR: cart.items,
+            ORDER_TOTAL: cart.$totalPrice
         };
 
         Orders.insertOne(ordersData, function (err, docs) {
