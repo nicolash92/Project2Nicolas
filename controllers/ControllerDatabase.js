@@ -84,7 +84,7 @@ module.exports.storeData =  function (request, response) {
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
             //DATE: '',//new Date(),
-            PRODUCT_VECTOR: '',//cart.items,
+            PRODUCTVECTOR: '',//cart.items,
             ORDER_TOTAL: cart.totalPrice
         };
 
