@@ -39,9 +39,9 @@ module.exports.storeData =  function (request, response) {
             CREDITCARDTYPE: card.cardType,
             CREDITCARDNUM: card.cardNumber,
             CREDITCARDEXP: card.expMonth,
-            CREDITCARDSECURITYNUM: card.securityCode
+            CREDITCARDSECURITYNUM: ''//card.securityCode
         };
-
+/*
         Billing.insertOne(billingData, function (err, docs) {
             if (err) throw err;
 
@@ -69,14 +69,14 @@ module.exports.storeData =  function (request, response) {
             SHIPPING_ID: shippingID,
             DATE: '',
             PRODUCT_VECTOR: cart.items,
-            ORDER_TOTAL: cart.$totalPrice
+            ORDER_TOTAL: cart.totalPrice
         };
 
         Orders.insertOne(ordersData, function (err, docs) {
             if (err) throw err;
 
         });
-
+*/
         response.send('succseessssafas');
 
         db.close(function (err) {
