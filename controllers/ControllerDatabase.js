@@ -61,13 +61,13 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-/*
+
         var Orders = db.collection('ORDERS');
         var ordersData={
             CUSTOMER_ID: customerID,
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
-            DATE: '',
+            DATE: new Date(),
             PRODUCT_VECTOR: cart.items,
             ORDER_TOTAL: cart.totalPrice
         };
@@ -76,7 +76,7 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-*/
+
         response.send('succseessssafas');
 
         db.close(function (err) {
