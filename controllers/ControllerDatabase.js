@@ -15,10 +15,10 @@ module.exports.storeData =  function (request, response) {
         var billingID = Math.floor((Math.random()*10000000000)+1 );
         var shippingID = Math.floor((Math.random()*10000000000)+1 );
 
-        var Orders = db.collection('CUSTOMERS');
-        var ordersData={
+        var Customers = db.collection('CUSTOMERS');
+        var customersData={
             _id: cutomerID,
-            FIRSTNAME: '1',
+            FIRSTNAME: customer.name.fName,
             LASTNAME: '1',
             STREET: '1',
             CITY: '1',
@@ -27,23 +27,55 @@ module.exports.storeData =  function (request, response) {
             EMAIL: '1'
         };
 
+        Customers.insertOne(customersData, function (err, docs) {
+            if (err) throw err;
+
+        });
+
+        var Billing = db.collection('BILLING');
+        var billingData={
+            _id:billingID,
+            CUSTOMER_ID:cutomerID,
+            CREDITCARDTYPE: '',
+            CREDITCARDNUM: '',
+            CREDITCARDEXP: '',
+            CREDITCARDSECURITYNUM: ''
+        };
+
+        Billing.insertOne(billingData, function (err, docs) {
+            if (err) throw err;
+
+        });
+
+        var Shipping = db.collection('SHIPPING');
+        var shippingData={
+            _id: shippingID,
+            CUSTOMER_ID: cutomerID,
+            SHIPPING_STREET: '',
+            SHIPPING_CITY: '',
+            SHIPPING_STATE: '',
+            SHIPPING_ZIP: ''
+        };
+
+        Shipping.insertOne(shippingData, function (err, docs) {
+            if (err) throw err;
+
+        });
+
+        var Orders = db.collection('Orders');
+        var ordersData={
+            CUSTOMER_ID: cutomerID,
+            BILLING_ID: billingID,
+            SHIPPING_ID: shippingID,
+            DATE: '',
+            PRODUCT_VECTOR: '',
+            ORDER_TOTAL: ''
+        };
+
         Orders.insertOne(ordersData, function (err, docs) {
             if (err) throw err;
 
         });
-        /*
-        var Orders = db.collection('Orders');
-
-        var Orders = db.collection('Orders');
-
-        var Orders = db.collection('Orders');
-        */
-        /*Orders.find().toArray(function (err, docs) {
-            if(err) throw err;
-
-            response.render('getAllOrders', {results: docs});
-
-        });*/
 
         response.send('succseessssafas');
 
