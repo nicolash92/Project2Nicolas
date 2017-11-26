@@ -53,7 +53,7 @@ module.exports.storeData =  function (request, response) {
             CUSTOMER_ID:customerID,
             CREDITCARDTYPE: card.cardType,
             CREDITCARDNUM: card.cardNumber,
-            CREDITCARDEXP: card.expMonth,
+            CREDITCARDEXP: card.expMonth+'/'+card.expYear,
             CREDITCARDSECURITYNUM: card.securityCode
         };
 
@@ -61,7 +61,8 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-/*
+
+
         var Shipping = db.collection('SHIPPING');
         var shippingData={
             _id: shippingID,
@@ -82,8 +83,8 @@ module.exports.storeData =  function (request, response) {
             CUSTOMER_ID: customerID,
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
-            DATE: new Date(),
-            PRODUCT_VECTOR: cart.items,
+            DATE: '',//new Date(),
+            PRODUCT_VECTOR: '',//cart.items,
             ORDER_TOTAL: cart.totalPrice
         };
 
@@ -91,7 +92,7 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-*/
+
         response.send('succseessssafas');
 
         db.close(function (err) {
