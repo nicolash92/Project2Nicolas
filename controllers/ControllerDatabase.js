@@ -46,7 +46,7 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-/*
+
         var Shipping = db.collection('SHIPPING');
         var shippingData={
             _id: shippingID,
@@ -61,7 +61,7 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-
+/*
         var Orders = db.collection('ORDERS');
         var ordersData={
             CUSTOMER_ID: customerID,
