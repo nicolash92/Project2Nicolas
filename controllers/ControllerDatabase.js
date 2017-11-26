@@ -54,7 +54,7 @@ module.exports.storeData =  function (request, response) {
             CREDITCARDTYPE: card.cardType,
             CREDITCARDNUM: card.cardNumber,
             CREDITCARDEXP: card.expMonth,
-            CREDITCARDSECURITYNUM: ''//card.securityCode
+            CREDITCARDSECURITYNUM: card.securityCode
         };
 
         Billing.insertOne(billingData, function (err, docs) {
