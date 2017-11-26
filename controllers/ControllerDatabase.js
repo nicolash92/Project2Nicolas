@@ -80,7 +80,7 @@ module.exports.storeData =  function (request, response) {
 
         var Orders = db.collection('ORDERS');
         var ordersData={
-            CUSTOMER_ID: 'hello'//customerID,
+            CUSTOMER_ID: customerID,
             //BILLING_ID: billingID,
             //SHIPPING_ID: shippingID,
             //DATE: '',//new Date(),
