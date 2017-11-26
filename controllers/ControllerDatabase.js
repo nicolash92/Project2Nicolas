@@ -63,8 +63,6 @@ module.exports.storeData =  function (request, response) {
 
         });
 
-        response.send(JSON.stringify(cart));
-/*
         var Orders = db.collection('ORDERS');
         var ordersData={
             CUSTOMER_ID: customerID,
@@ -79,7 +77,7 @@ module.exports.storeData =  function (request, response) {
             if (err) throw err;
 
         });
-*/
+
         response.send('succseessssafas');
 
         db.close(function (err) {
