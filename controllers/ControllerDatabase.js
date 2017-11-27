@@ -10,6 +10,7 @@ module.exports.storeData =  function (request, response) {
         var cart= JSON.parse(request.body.cart);
         var card= JSON.parse(request.body.card);
         var customer= JSON.parse(request.body.customer);
+        var total = request.body.Total;
 
         var customerID = Math.floor((Math.random()*10000000000)+1 );
         var billingID = Math.floor((Math.random()*10000000000)+1 );
@@ -70,7 +71,7 @@ module.exports.storeData =  function (request, response) {
             SHIPPING_ID: shippingID,
             DATE: new Date(),
             PRODUCT_VECTOR: cart.items,
-            ORDER_TOTAL: cart.totalPrice
+            ORDER_TOTAL: total
         };
 
         Orders.insertOne(ordersData, function (err, docs) {
