@@ -24,7 +24,7 @@ module.exports.storeData =  function (request, response) {
             CITY: card.billingAddress.city,
             STATE: card.billingAddress.state,
             ZIP: card.billingAddress.zip,
-            EMAIL: customer.phoneNumber
+            EMAIL: customer.email
         };
 
         Customers.insertOne(customersData, function (err, docs) {
